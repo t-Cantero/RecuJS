@@ -41,11 +41,14 @@
                 var num = document.getElementById("numComensales").value;
 
                 // 2. Obtener el nombre del comensal
-                var nombre = document.querySelector('input[name="comensal"]').value;
+                var nombre = document.querySelector('input[name="comensal"]').value.trim();
+
                 if(num === "" || nombre === ""){
                     alert("Rellena los campos");
                 }else if(num <=0){
                     alert("El numero de comensales debe ser uno o superior");
+                }else if(nombre.length<3){
+                    alert("El nombre debe de tener más de dos carácteres.")
                 }else{
                     // 3. Crear un nuevo párrafo con la información
                     var nuevoElemento = document.createElement("p");
@@ -55,7 +58,7 @@
                     document.getElementById("listaComensales").appendChild(nuevoElemento);
 
                     // 5. (Opcional) Limpiar el campo de nombre
-                    document.querySelector('input[name="comensal"]').value;
+                    document.querySelector('input[name="comensal"]').value = "";
                     document.getElementById("numComensales").value = "";
                 }
 
