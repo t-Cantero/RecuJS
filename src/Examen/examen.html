@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <h1>Ejercicio JavaScript</h1>
+        <!-- Botón para cambiar el color -->
+        <button onclick="cambiaColor()">Cambiar color</button>
+
+        <p>Este es el primer párrafo.</p>
+        <p>Este es el segundo párrafo.</p>
+        <p class="blue-class">Este es el tercer párrafo.</p>
+
+        <h2>Lista de Comensales</h2>
+        <form id="formComensales">
+            <label class="clase-azul01" for="numComensales">Número de comensales:</label>
+            <input type="number" id="numComensales" name="numComensales">
+
+            <div id="listaComensales" class="clase-azul01">
+                <!-- Campo de texto para indicar el nombre de un comensal -->
+                <input type="text" name="comensal" placeholder="Nombre del comensal">
+            </div>
+        </form>
+        <button onclick="anadirComensal()">Añadir Comensal</button>
+
+        <script>
+            // TAREA 1: Cambiar el color de fondo de las etiquetas de clase clase-azul01 a 'Aquamarine'
+            function cambiaColor() {
+                var etiquetas = document.getElementsByClassName("clase-azul01");
+                for (var i = 0; i < etiquetas.length; i++) {
+                    etiquetas[i].style.backgroundColor = "Aquamarine";
+                }
+            }
+
+            // TAREA 2: Añadir un nuevo campo de comensal dentro del formulario
+            function anadirComensal() {
+                // IMPLEMENTA ESTA FUNCIÓN
+                // 1. Obtener el número de comensales
+                var num = document.getElementById("numComensales").value;
+
+                // 2. Obtener el nombre del comensal
+                var nombre = document.querySelector('input[name="comensal"]').value;
+                if(num === "" || nombre === ""){
+                    alert("Rellena los campos");
+                }else if(num <=0){
+                    alert("El numero de comensales debe ser uno o superior");
+                }else{
+                    // 3. Crear un nuevo párrafo con la información
+                    var nuevoElemento = document.createElement("p");
+                    nuevoElemento.textContent = "Comensal: " + nombre + " | Número de comensales: " + num;
+
+                    // 4. Agregar el párrafo al contenedor
+                    document.getElementById("listaComensales").appendChild(nuevoElemento);
+
+                    // 5. (Opcional) Limpiar el campo de nombre
+                    document.querySelector('input[name="comensal"]').value;
+                    document.getElementById("numComensales").value = "";
+                }
+
+            }
+        </script>
+    </body>
+
+</html>
